@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        async function browseAndReadFiles() {
+            try {
+                // 打开文件夹选择器
+                const directoryHandle = await window.showDirectoryPicker();
+
+                // 遍历文件夹中的所有文件
+                for await (const [name, handle] of directoryHandle.entries()) {
+                    if (handle.kind === 'file') {
+                        // 读取文件内容
+                        const file = await handle.getFile();
+                        const content = await file.text();
+
+                        console.log(`文件名: ${name}`);
+                        console.log(`文件内容: ${content}`);
+                    }
+                }
+            } catch (err) {
+                console.error('Error:', err);
+            }
+        }
+
+        // browseAndReadFiles();
+
+
+    </script>
+</head>
+
+<body>
+    <button onclick="browseAndReadFiles()">click me</button>
+
+
+
+
+</body>
+
+</html>
