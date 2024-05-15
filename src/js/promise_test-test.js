@@ -7,73 +7,80 @@ class MyPromise {
         this.onFullfilledCallbacks = []
         this.onRejectedCallbacks = []
 
-        const resolve = (value) => {
+        this.resolve = (value) => {
             if (this.state === 'pending') {
                 this.state = 'fullfilled'
                 this.value = value
+                //             this.onFullfilledCallbacks.forEach(callback => callback(this.value))
+            } else {
                 this.onFullfilledCallbacks.forEach(callback => callback(this.value))
             }
 
         }
 
 
-        const reject = (reason) => {
+        this.reject = (reason) => {
             if (this.state === 'pending') {
                 this.state = 'rejected'
                 this.reason = reason
+                console.log(reason)
+                //            this.onRejectedCallbacks.forEach(callback => callback(this.reason))
+            } else {
+                console.error(reason)
                 this.onRejectedCallbacks.forEach(callback => callback(this.reason))
             }
+
         }
 
         try {
-            executor(resolve, reject)
-        } catch {
-            reject()
+            executor(this.resolve, this.reject)
+        } catch (e) {
+            this.reject(e)
         }
 
     }
 
     then(onFulfilled, onRejected) {
-        return new MyPromise((resolve, reject) => {
-            const fulfilledHandler = (value) => {
-                if (typeof onFulfilled === 'funciton') {
-                    resolve(onFulfilled(value))
-                } else {
-                    resolve(value)
-                }
-
-            }
+        // return new MyPromise((resolve, reject) => {
 
 
-            const rejectedHandler = (reason) => {
-
-                if (typeof onRejected === 'funciton') {
-                    reject(onRejected(reason))
-                } else {
-                    reject(reason)
-                }
-
-            }
-
-
-            if (this.state === 'pending') {
-
-                this.onFullfilledCallbacks.push(fulfilledHandler)
-                this.onRejectedCallbacks.push(rejectedHandler)
-
-            } else if (this.state === 'fullfilled') {
-                fulfilledHandler(this.value)
-
+        const fulfilledHandler = (value) => {
+            if (typeof onFulfilled === 'function') {
+                 onFulfilled(value)
             } else {
-                rejectedHandler(this.reason)
+                  value
             }
+
         }
-        )
+
+
+        const rejectedHandler = (reason) => {
+
+            if (typeof onRejected === 'function') {
+                 onRejected(reason)
+            } else {
+                 reason
+            }
+
+        }
+        this.onFullfilledCallbacks.push(fulfilledHandler);
+        this.onRejectedCallbacks.push(rejectedHandler);
+
+
+        if (this.state === 'fullfilled') {
+            this.resolve(this.value)
+
+        } else {
+            this.reject(this.reason)
+        }
+        // })
+
+        return this;
     }
 
 
-    catch( reject){
-     return  this.then(undefined , reject)
+    catch(reject) {
+        return this.then(undefined, reject)
     }
 
 }
@@ -92,7 +99,7 @@ const MyPromise_2 = new MyPromise(executor).then(
     (result) => {
         console.log(result)
         x += 1
-    } ,
+    },
     (err) => {
         console.log(err)
         x += 1
