@@ -92,16 +92,6 @@
 
         var likes = []
 
-        // function changeColor() {
-        //     // console.log(ele.style);
-
-        //     let item = item.id
-        //     let color = getRandomColor();
-        //     console.log(color)
-        //     ele.style.backgroundColor = '#' + color;
-        //     m.set(id + '', color)
-
-        // }
 
 
 
@@ -155,7 +145,6 @@
 
                 let id = item.id
                 let color = getRandomColor();
-                console.log(color)
                 item.style.backgroundColor = '#' + color;
                 m.set(id + '', color)
 
@@ -168,7 +157,6 @@
 
     likeitems.forEach(likeitem => {
         likeitem.addEventListener('click', () => {
-            console.log("clicked");
             let o = likeitem.parentElement.id
             likes.push(m.get(o));
         });
