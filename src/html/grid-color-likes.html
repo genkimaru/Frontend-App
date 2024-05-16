@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            background-color: azure;
+            text-align: center;
+            font-size: larger;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 10px;
+            height: 100vh
+        }
+
+
+
+        .item div {
+            /* transform: translate(-50%, -50%); */
+            width: 50px;
+            height: 50px;
+            background-color: azure;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            /* pointer-events: none;
+            cursor: not-allowed; */
+
+        }
+
+        .item div:hover {
+            background-color: red;
+        }
+
+        .item div:active {
+            background-color: azure;
+        }
+    </style>
+
+    <script>
+
+        /**
+          取 0 ~ n -1 的 随机数
+        */
+        function getRandomNumber(n) {
+            return Math.floor(Math.random() * n);
+        }
+
+
+        function getRandomColor() {
+            let color = ''
+            numbers = [
+                '0',
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+                'a',
+                'b',
+                'c',
+                'd',
+                'e',
+                'f'];
+            for (let i = 0; i < 6; i++) {
+                let o = numbers[getRandomNumber(16)]
+                color = color + o;
+            }
+            return color;
+        }
+
+
+        function init() {
+
+            for (let i = 1; i < 11; i++) {
+                m.set(i + '', 0);
+            }
+        }
+
+
+        var m = new Map();
+        init();
+
+        var likes = []
+
+        // function changeColor() {
+        //     // console.log(ele.style);
+
+        //     let item = item.id
+        //     let color = getRandomColor();
+        //     console.log(color)
+        //     ele.style.backgroundColor = '#' + color;
+        //     m.set(id + '', color)
+
+        // }
+
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="1" class="one item">
+            <div>like</div>
+        </div>
+        <div id="2" class="item two ">
+            <div>like</div>
+        </div>
+        <div id="3" class="item three">
+            <div>like</div>
+        </div>
+        <div id="4" class="item four ">
+            <div>like</div>
+        </div>
+        <div id="5" class="item five">
+            <div>like</div>
+        </div>
+        <div id="6" class="item six ">
+            <div>like</div>
+        </div>
+        <div id="7" class="item seven">
+            <div>like</div>
+        </div>
+        <div id="8" class="item eight">
+            <div>like</div>
+        </div>
+        <div id="9" class="item nine ">
+            <div>like</div>
+        </div>
+        <div id="10" class="item ten">
+            <div>like</div>
+        </div>
+
+    </div>
+
+
+</body>
+
+<script>
+
+
+    const items = document.querySelectorAll('.item');
+    items.forEach(item => {
+            item.addEventListener('click', () => {
+
+                let id = item.id
+                let color = getRandomColor();
+                console.log(color)
+                item.style.backgroundColor = '#' + color;
+                m.set(id + '', color)
+
+
+            })
+        });
+
+
+    const likeitems = document.querySelectorAll('.item div');
+
+    likeitems.forEach(likeitem => {
+        likeitem.addEventListener('click', () => {
+            console.log("clicked");
+            let o = likeitem.parentElement.id
+            likes.push(m.get(o));
+        });
+    });
+</script>
+
+</html>
