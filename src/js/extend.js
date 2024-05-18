@@ -14,7 +14,7 @@ function ParentClass(name) {
   
 
 //   console.log(ChildClass.prototype.constructor)
-  ChildClass.prototype = ParentClass.prototype; // 将子类原型指向父类原型
+  ChildClass.prototype = Object.create(ParentClass.prototype); // 将子类原型指向父类原型
 //   console.log(ChildClass.prototype.constructor)
   ChildClass.prototype.constructor = ChildClass; // 修正子类的构造函数
 

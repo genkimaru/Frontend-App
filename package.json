@@ -12,8 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.4.3",
+    "text-image": "latest",
     "typescript": "^5.4.5",
-    "text-image":"latest",
-    "vue":"latest"
+    "vue": "3.4.27"
   }
 }
