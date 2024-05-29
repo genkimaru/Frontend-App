@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .overlay {
+            position: fixed;
+             top: 0;
+              left: 0;
+              width: 100%;
+               height: 100%; 
+               background-color: rgba(0, 0, 0, 0.5); 
+               z-index: 998;
+        }
+        .popup {
+            z-index: 999;
+            position: fixed;
+             top: 25%;
+              left:  25%;
+              width: 50%;
+               height: 50%; 
+               background-color: azure;
+        }
+        .hiden {
+            display: none;
+        }
+    </style>
+    <script>
+
+        function popup(){
+            let overlay = document.getElementsByClassName('overlay')[0];
+            let popup = document.getElementsByClassName('popup')[0];
+            overlay.classList.remove('hiden');
+            popup.classList.remove('hiden');
+        }
+    </script>
+</head>
+<body>
+    <button onclick="popup()">弹窗</button>
+    <div class="overlay hiden"></div>
+    <div class="popup hiden">
+        
+    </div>
+    
+</body>
+</html>
