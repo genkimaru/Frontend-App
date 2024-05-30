@@ -11,19 +11,20 @@
         height: 100vh;
         margin: auto;
         background-color: aqua;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         overflow-x: scroll;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: y mandatory;
         }
 
         .item {
             font-size: xx-large;
+            /*  0 代表不会收缩*/
             flex-shrink: 0;
             align-items: center;
             height: 100%;
             width: 100%;
-            background-color: blueviolet;
+            /* background-color: blueviolet; */
             scroll-snap-align: center;
             scroll-snap-stop: always;
         }
