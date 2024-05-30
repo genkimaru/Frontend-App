@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex </title>
+
+    <style>
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            /* width: 50%; */
+            margin: auto;
+            height: 200px;
+            background-color: gray;
+            /* 设置弹性盒子main axis 方向上的对齐方式。*/
+            justify-content: space-around;
+            /* 设置弹性盒子侧轴方向的 对齐方式 */
+            align-items:  stretch;
+             /* flex-wrap: wrap; */
+            /*设置盒子内部的行的对齐方式*/
+            align-content: center;
+            /* overflow-x: scroll; */
+        }
+
+        .item {
+            /* flex-shrink: 0; */
+             /* width: 100%; */
+          /*  height: 100%;    */
+            /* margin:auto; */
+            
+        }
+        .item:nth-child(1){
+            background-color: lightblue;
+            /* align-self: flex-start; */
+        }
+        .item:nth-child(2){
+            background-color: lightcoral;
+        }
+        .item:nth-child(3){
+            background-color: lightgreen;
+        }
+        .item:nth-child(4){
+            background-color: lightpink;
+        }
+        .item:nth-child(5){
+            background-color: lightseagreen;
+        }
+        .item:nth-child(6){
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, reprehenderit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quo esse omnis, odio ea pariatur molestias autem modi a consequuntur et odit eum exercitationem libero tempora maxime inventore doloremque reprehenderit? Non voluptatum consectetur esse beatae consequatur hic consequuntur ipsum ipsa.</div>
+        <div class="item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, nulla?</div>
+        <div class="item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, accusamus.</div>
+        <div class="item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, totam?</div>
+        <div class="item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, sed?</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quia!</div>
+    </div>
+    
+</body>
+</html>
