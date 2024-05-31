@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo class / pseudo element</title>
+
+    <style>
+        p:target {
+            color: aqua;
+            background-color: blueviolet;
+        }
+
+
+        p:target::before {
+            font: 70% sans-serif;
+            content: "►";
+            color: limegreen;
+            margin-right: 0.25em;
+        }
+
+        p:target::after {
+            font: 70% sans-serif;
+            content: "◆";
+            color: limegreen;
+            margin-right: 0.25em;
+        }
+
+        h1,
+        h2,
+        h3 {
+            /* line-height: 20px; */
+            color: lightcoral;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /** :is 和 ：has 选择器 的联合使用*/
+
+        :is(h1, h2, h3):has(+ :is(h2, h3, h4)) {
+            border : 0.2rem solid goldenrod;
+        }
+    </style>
+</head>
+<body>
+    <h1>展示如何使用伪类 :target :has :is 和 伪元素::after  ::before的使用。</h1>
+    <h2>展示如何使用伪类 :target :has :is 和 伪元素::after  ::before的使用。</h2>
+    <h3>展示如何使用伪类 :target :has :is 和 伪元素::after  ::before的使用。</h3>
+    <a href="#page">链接</a>
+    <a href="#page2">链接2</a>
+    <p id="page">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, totam.</p>
+
+    <p id="page2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, totam.</p>
+</body>
+</html>
