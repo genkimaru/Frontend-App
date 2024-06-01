@@ -640,6 +640,14 @@ video {
   inset: 1.5rem;
 }
 
+.inset-12 {
+  inset: 3rem;
+}
+
+.inset-9 {
+  inset: 2.25rem;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -654,6 +662,18 @@ video {
 
 .top-1\/2 {
   top: 50%;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.right-6 {
+  right: 1.5rem;
 }
 
 .-m-4 {
@@ -777,8 +797,16 @@ video {
   height: 100vh;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .max-h-screen {
   max-height: 100vh;
+}
+
+.max-h-full {
+  max-height: 100%;
 }
 
 .min-h-screen {
@@ -807,6 +835,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-32 {
+  width: 8rem;
 }
 
 .max-w-md {
