@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        form {}
 
         /* first letter transform*/
         .content::first-letter {
@@ -21,9 +20,17 @@
             color: aqua;
             text-decoration: underline;
         }
+
+        /* 获取包含focus 的div*/
         .input-item:focus-within {
             background-color: lightgreen;
         }
+
+        span:has(+ input[data-required])::after {
+            content: '*';
+            color : red;
+        }
+
     </style>
 </head>
 
@@ -42,7 +49,9 @@
             </label>
         </div>
         <div>
+            <span>
             <input type="submit" value="submit">
+        </span>
         </div>
     </div>
     <div>
