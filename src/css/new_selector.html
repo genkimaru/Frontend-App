@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {}
+
+        /* first letter transform*/
+        .content::first-letter {
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-right: 10px;
+            float: left;
+        }
+
+        .content::selection {
+            color: aqua;
+            text-decoration: underline;
+        }
+        .input-item:focus-within {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="input-item">
+            <label for="name">
+                <span>name</span>
+                <input data-required id="name" type="text">
+            </label>
+        </div>
+        <div class="input-item">
+            <label for="email">
+                <span>email</span>
+                <input id="email" type="email">
+            </label>
+        </div>
+        <div>
+            <input type="submit" value="submit">
+        </div>
+    </div>
+    <div>
+        <p class="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ullam incidunt sequi delectus minima aut ea.
+            Delectus repellendus itaque dicta?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga molestias ducimus, repellat minus pariatur
+            alias consequuntur. Rem impedit cumque dicta!
+        </p>
+    </div>
+</body>
+
+</html>
