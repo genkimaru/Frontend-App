@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tailwind css playground</title>
+  <link href="../output.css" rel="stylesheet" />
+</head>
+
+<body >
+
+  <div  class="h-screen bg-lime-400">
+    <div style="position: relative; background-color: greenyellow;">
+      <ul>
+        <li>当height设置为50% 的时候，这个百分数是相对于 其父元素而言的。</li>
+        <li>同理，当position是 relative的时候，设置的 top ， left 的百分数也都是相对于其父元素而言。</li>
+        <li>如果父元素是body ，而body没有设置任何高度值的时候， 那么，body的高度取决于其子元素的高度值。</li>
+      </ul>
+    </div>
+
+    <div class="relative inset-20 ">
+
+      <div class=" absolute inset-1  ">
+        <img src="https://picsum.photos/200?random?1" alt="" class="w-auto h-auto" />
+      </div>
+      <div class=" absolute inset-3 ">
+        <img src="https://picsum.photos/200?random?2" alt="Image 1" class="w-auto h-auto">
+      </div>
+      <div class=" absolute inset-6  ">
+        <img src="https://picsum.photos/200?random?3" alt="Image 2" class="w-auto h-auto">
+      </div>
+      <div class=" absolute inset-9 ">
+        <img src="https://picsum.photos/200?random?4" alt="Image 3" class="w-auto h-auto">
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  // const carouselItems = document.querySelectorAll('.absolute');
+  // let currentIndex = 0;
+
+  // function showCarouselItem(index) {
+  //   carouselItems.forEach((item, i) => {
+  //     if (i === index) {
+  //       item.classList.remove('opacity-0');
+  //       item.classList.add('opacity-100');
+  //     } else {
+  //       item.classList.remove('opacity-100');
+  //       item.classList.add('opacity-0');
+  //     }
+  //   });
+  // }
+
+  // function nextCarouselItem() {
+  //   currentIndex = (currentIndex + 1) % carouselItems.length;
+  //   showCarouselItem(currentIndex);
+  // }
+
+  // setInterval(nextCarouselItem, 5000); // Change slide every 5 seconds
+
+
+
+</script>
+
+</html>
