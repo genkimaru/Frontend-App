@@ -11,7 +11,7 @@ getUser.addImpl('string', 'number', (name , age) => `Hello ${name}, you are ${ag
 getUser.addImpl('number', 'string', (age , name) => `Hello ${name}, you are ${age} years old`);
 
 // test
-getUser('kevin');
-getUser('kevin','kate');
-getUser('kevin', 25);
-getUser(25 ,'kevin');
+console.log(getUser('kevin'));
+console.log(getUser('kevin','kate'));
+console.log(getUser('kevin', 25));
+console.log(getUser(25 ,'kevin'));

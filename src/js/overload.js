@@ -3,7 +3,7 @@ function createOverloadFunction() {
   function overload(...args) {
     const parms = args.map((p) => typeof p).join(", ");
     if (map.has(parms)) {
-      map.get(parms).apply(null, args);
+      return map.get(parms).apply(this, args);
     } else {
       throw new Error(`No overload for ${parms} found`);
     }
