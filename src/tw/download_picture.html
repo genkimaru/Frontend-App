@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>download picture</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+    fetch('https://picsum.photos/1920/1080?random=1')
+        .then(response => response.blob())
+        .then(blob => {
+            // 继续处理下载步骤
+            downloadImage(blob);
+        })
+        .catch(error => {
+            console.error('Error fetching image:', error);
+        });
+
+
+    function downloadImage(blob) {
+        const url = URL.createObjectURL(blob);
+        const ele = document.createElement('a');
+        ele.href = url;
+        ele.setAttribute('download', 'image.jpg'); // 设置下载文件名
+
+        // 将链接添加到 DOM 中并点击触发下载
+        document.body.appendChild(ele);
+        ele.click();
+
+        // 清理资源
+        document.body.removeChild(ele);
+        URL.revokeObjectURL(url);
+    }
+
+</script>
+
+</html>
