@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Chess</title>
+  <style>
+    .board {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-gap: 2px;
+      width: 400px;
+      height: 400px;
+    }
+    .board div {
+      width: 50px;
+      height: 50px;
+      background-color: #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+    }
+
+    div.yellow-cell {
+        background-color: #f5f5dc; /* 浅黄色 */
+    }
+
+    div.green-cell {
+        background-color: #90ee90; /* 浅绿色 */
+    }
+
+    div.river {
+        background-image: linear-gradient(to bottom, #0077ff, #00aaff);
+        background-color: #add8e6; /* 河流颜色 */
+    }
+
+    .selected{
+      opacity: 80%;
+      filter: blur(5px);
+    }
+  </style>
+</head>
+<body>
+  <div class="board"></div>
+
+  <script>
+    const board = document.querySelector('.board');
+    const pieces = ['🐯', '🐭', '🐱', '🐻', '🐢', '🐮', '🐷', '🐓'];
+
+    // 初始化 黄方棋盘
+    for (let i = 0; i < 32; i++) {
+      const cell = document.createElement('div');
+      cell.classList.add('yellow-cell');
+      if(i < 8){
+        cell.textContent = pieces[i];
+      }
+      board.appendChild(cell);
+    }
+    // 初始化 中间的河流
+    for (let i = 0; i < 8; i++) {
+      const cell = document.createElement('div');
+      cell.classList.add('river');
+      board.appendChild(cell);
+    }
+
+    // 初始化 绿方棋盘
+    for (let i = 0; i < 32; i++) {
+      const cell = document.createElement('div');
+      cell.classList.add('green-cell');
+      if(i >= 24){
+        cell.textContent = pieces[i % pieces.length  ];
+      }
+      board.appendChild(cell);
+    }
+
+
+
+    
+  </script>
+  <script type="text/javascript" src="./animal.js" ></script>
+</body>
+</html>

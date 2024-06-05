@@ -1,7 +1,7 @@
 // 获取画布元素并设置其大小
 const canvas = document.getElementById('game-canvas');
-canvas.width = 600;
-canvas.height = 600;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
 
 // 定义蛇的初始长度和位置
@@ -39,16 +39,16 @@ function moveSnake() {
     const head = { ...snake[0] };
     switch (currentDirection) {
       case 'left':
-        head.x -= 5;
+        head.x -= 2;
         break;
       case 'up':
-        head.y -= 5;
+        head.y -= 2;
         break;
       case 'right':
-        head.x += 5;
+        head.x += 2;
         break;
       case 'down':
-        head.y += 5;
+        head.y += 2;
         break;
     }
     snake.unshift(head);
@@ -82,9 +82,15 @@ function moveSnake() {
     y: Math.floor(Math.random() * (canvas.height / 10)) * 10
   };
   
+function condition(head , food){
+  if(Math.abs(head.x - food.x) <= 5 && Math.abs(head.y - food.y) <= 5){
+        return true;
+    }
+}
+
   function eatFood() {
     const head = { ...snake[0] };
-    if (head.x === food.x && head.y === food.y) {
+    if (condition(head, food)) {
       // 增加蛇的长度
       snake.push({ ...snake[snake.length - 1] });
       // 生成新的食物
