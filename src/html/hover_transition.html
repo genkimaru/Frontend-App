@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.detail {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .wrapper {
+            display:grid;
+            grid-template-rows: 0fr; 
+            transition: 0.5s;
+        }
+
+
+        /*需要加上相邻元素选择器 + ， 或者是 兄弟元素选择器 ～ */
+        .btn:hover + .wrapper {
+            background-color: lightgreen;
+            grid-template-rows: 1fr;
+            /* height: 300px; */
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+        <button class="btn">Show</button>
+        <div class="wrapper"> 
+        <div class="detail">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque sapiente, laudantium aliquid ad modi,
+            adipisci eius tenetur, ratione molestias veritatis facilis neque nihil dolorem facere nesciunt. Distinctio
+            tempore ipsum mollitia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio soluta dolorem molestiae quisquam eos accusantium, deleniti dignissimos maiores aliquid iure ullam minima commodi debitis rerum reiciendis nobis repudiandae cupiditate quibusdam minus totam fugit. Quod illum nam nisi temporibus sequi obcaecati.
+        </div>
+        </div>
+    
+
+</body>
+
+</html>
