@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MutationObverser</title>
+    <style>
+        .watermark {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 25%;
+            right: 25%;
+            /* background-color:azure; */
+            /* mix-blend-mode: difference; */
+            color: black;
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            word-spacing: 2rem;
+            font-size: 32px;
+            font-weight: lighter;
+            text-align: center;
+            z-index: 9999;
+            opacity: 0.8;
+        }
+
+        .pic{
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="watermark">
+            copyright reserved
+        </div>
+        <div class="pic">
+            <img src="https://picsum.photos/1200/625">
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    let mob = new MutationObserver((entries) =>{
+        console.log(entries);
+        entries.forEach(entry => {
+            if(entry.type === 'attributes'){
+                console.log(`attribute: ${entry.attributeName} changed`);
+                alert('Dont change')
+            }
+            if(entry.type === 'childList'){
+                console.log(`attribute: ${entry.target} changed`);
+                alert('Dont change')
+            }
+        });
+    });
+
+    let watermark = document.querySelector('.watermark');
+    mob.observe(watermark, {
+        attributes: true,
+        childList: true,
+        subtree: true
+    });
+
+    
+
+</script>
+</html>

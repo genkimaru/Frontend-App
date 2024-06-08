@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Piano</title>
+  <style>
+    .piano {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .key {
+      width: 50px;
+      height: 200px;
+      margin: 0 5px;
+      background-color: white;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+
+    .black-key {
+      background-color: black;
+      height: 120px;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="piano">
+    <div class="key" data-note="C4"></div>
+    <div class="key black-key" data-note="C#4"></div>
+    <div class="key" data-note="D4"></div>
+    <div class="key black-key" data-note="D#4"></div>
+    <div class="key" data-note="E4"></div>
+    <div class="key" data-note="F4"></div>
+    <div class="key black-key" data-note="F#4"></div>
+    <div class="key" data-note="G4"></div>
+    <div class="key black-key" data-note="G#4"></div>
+    <div class="key" data-note="A4"></div>
+    <div class="key black-key" data-note="A#4"></div>
+    <div class="key" data-note="B4"></div>
+  </div>
+
+  <script>
+    const keys = document.querySelectorAll('.key');
+
+    keys.forEach(key => {
+      key.addEventListener('click', () => {
+        const note = key.getAttribute('data-note');
+        playNote(note);
+      });
+    });
+
+    function playNote(note) {
+      const audio = new Audio(`https://s3-us-west-2.amazonaws.com/s.cdpn.io/692239/${note}.mp3`);
+      audio.play();
+    }
+  </script>
+</body>
+</html>
