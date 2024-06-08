@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+
+.tab-btn {
+    @apply bg-gray-200 px-4 py-2 rounded-t-lg focus:outline-none;
+  }
+  .tab-btn.active {
+    @apply bg-yellow-200;
+  }
+  .tab-content > div {
+    @apply bg-white p-4 rounded-b-lg hidden;
+  }
+  .tab-content > div.active {
+    @apply block;
+  }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>纯CSS 实现 Tab 功能</title>
+  <style>
+    /* 整体样式 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Tab 导航条样式 */
+    .tab-nav {
+      display: flex;
+      background-color: #f1f1f1;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .tab-nav label {
+      color: #333;
+      padding: 14px 20px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .tab-nav label:hover {
+      background-color: #ddd;
+    }
+
+    /* 激活状态的 Tab 样式 */
+    .tab-nav input[type="radio"] {
+      display: none;
+    }
+
+    .tab-nav input[type="radio"]:checked + label {
+      background-color: #ccc;
+      font-weight: bold;
+    }
+
+    /* Tab 内容区域样式 */
+    .tab-content {
+      padding: 20px;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-nav input[type="radio"]:checked ~ .tab-pane {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <nav class="tab-nav">
+    <input type="radio" name="tab" id="tab1-radio" checked>
+    <label for="tab1-radio">Tab 1</label>
+    <input type="radio" name="tab" id="tab2-radio">
+    <label for="tab2-radio">Tab 2</label>
+    <input type="radio" name="tab" id="tab3-radio">
+    <label for="tab3-radio">Tab 3</label>
+  </nav>
+
+  <div class="tab-content">
+    <div class="tab-pane">
+      <h2>Tab 1 Content</h2>
+      <p>这里是 Tab 1 的内容。</p>
+    </div>
+    <div class="tab-pane">
+      <h2>Tab 2 Content</h2>
+      <p>这里是 Tab 2 的内容。</p>
+    </div>
+    <div class="tab-pane">
+      <h2>Tab 3 Content</h2>
+      <p>这里是 Tab 3 的内容。</p>
+    </div>
+  </div>
+</body>
+</html>
