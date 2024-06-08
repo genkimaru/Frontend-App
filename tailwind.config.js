@@ -5,4 +5,10 @@ module.exports = {
     
   },
   plugins: [],
+  corePlugins: {
+    preflight: true,
+    // 启用 @apply 指令
+    applyUtils: true,
+    postcss: true,
+  },
 }
