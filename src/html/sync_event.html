@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <button id="btn">buton</button>
+
+</body>
+
+<script>
+
+    const dom = document.querySelector('#btn');
+
+    // 创建一个 Proxy 对象来代理 btn 对象
+    const domProxy = new Proxy(dom, {
+        set: (target, property, value, receiver) => {
+            // 检查属性名是否以 'await' 开头
+            if (property.startsWith('await')) {
+                // 如果是以 'await' 开头的属性,则认为是事件绑定
+                if (typeof value !== 'function') {
+                    // 如果值不是函数,则抛出错误
+                    throw new TypeError('Event handler must be a function');
+                }
+                // 从属性名中获取事件名称
+                const eventName = property.replace('await', '').toLowerCase();
+                // 为按钮元素绑定事件处理程序
+
+                target.addEventListener(eventName, value, { once: true });
+
+                return true;
+
+            } else {
+
+                // 对于其他属性,直接设置到目标对象上
+                target[property] = value;
+                // 返回 true 表示设置成功
+                return true;
+
+            }
+        },
+        get: (target, property, receiver) => {
+            if (!property.startsWith('await')) {
+                // 对于获取属性的情况,直接返回目标对象的属性值
+                return target[property];
+            } else {
+               return  new Promise((resolve, reject) => { resolve(property) })
+            }
+        }
+    });
+
+    domProxy.awaitClick = (data) => {
+        console.log(data)
+    }
+
+    // domProxy.awaitHover = (data) => {
+    //     console.log('hover callback' + data);
+    //     return new Promise((resolve, reject) => {
+    //         resolve(data)
+    //     })
+    // }
+
+
+    (async (domProxy, count) => {
+        console.log(domProxy)
+        let result = await domProxy.awaitClick;
+        console.log(result)
+    })(domProxy,1)
+
+
+</script>
+
+</html>
