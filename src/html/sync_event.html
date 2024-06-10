@@ -32,6 +32,7 @@
                 // 为按钮元素绑定事件处理程序
 
                 target.addEventListener(eventName, value, { once: true });
+                target[eventName] = value;
 
                 return true;
 
@@ -49,28 +50,31 @@
                 // 对于获取属性的情况,直接返回目标对象的属性值
                 return target[property];
             } else {
-               return  new Promise((resolve, reject) => { resolve(property) })
+                const eventName = property.replace('await', '').toLowerCase();
+                return new Promise((resolve, reject) => { resolve(target[eventName]) })
             }
         }
     });
 
     domProxy.awaitClick = (data) => {
-        console.log(data)
+        console.log('click is triggered')
     }
 
-    // domProxy.awaitHover = (data) => {
-    //     console.log('hover callback' + data);
-    //     return new Promise((resolve, reject) => {
-    //         resolve(data)
-    //     })
-    // }
+    domProxy.awaitHover = (data) => {
+        console.log('hover is triggered')
+    }
 
 
-    (async (domProxy, count) => {
-        console.log(domProxy)
-        let result = await domProxy.awaitClick;
-        console.log(result)
-    })(domProxy,1)
+    for (eventname of ['click', 'hover']) {
+        (async (domProxy, eventname) => {
+            console.log(domProxy)
+            let result = await domProxy[eventname];
+            console.log(eventname + ' function: ' + result)
+        })(domProxy, eventname)
+    }
+
+
+
 
 
 </script>
