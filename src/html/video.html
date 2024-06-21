@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video blob</title>
+</head>
+
+<body>
+    <video id="myVideo" controls></video>
+</body>
+<script type="text/javascript">
+    // 1. 获取视频文件
+    (async () => {
+        const videoFile = './SampleVideo_1280x720_1mb.mp4'
+
+        // 2. 创建一个 Blob 对象
+        const videoBlob = await fetch(videoFile).then(response => response.blob());
+
+        // 3. 创建一个 URL 对象,指向 Blob 对象
+        const videoUrl = (URL || webkitURL ).createObjectURL(videoBlob);
+
+        // 4. 将视频URL设置到 <video> 元素的 src 属性上
+        const videoElement = document.getElementById('myVideo');
+        videoElement.src = videoUrl;
+    })();
+
+</script>
+
+</html>
