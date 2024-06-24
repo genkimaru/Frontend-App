@@ -1,0 +1,45 @@
+.circle {
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  position: relative;
+  background-color: lightblue;
+
+  .cell{
+    height:50px;
+    width: 50px;
+    position: absolute;
+    top: 50px;
+    left: 225px;
+    border-radius: 50%;
+    // background-color: azure;
+    $size: 5;
+    $deg: calc(360 / $size);
+
+    @for $i from 1 through $size {
+      .avatar-#{$i} {
+        border-radius: 50%;
+        content: URL("http://picsum.photos/50?random=#{$i}");
+        transform-origin: 25px 175px;
+        transform: rotate(#{$deg * $i}deg);
+        animation: move-#{$i} 20s linear infinite ;
+      }
+
+      @keyframes move-#{$i} {
+        0% {
+           transform: rotate(#{$deg * $i}deg);
+        }
+        100% {
+          transform: rotate(#{$deg * $i + 360}deg);
+        }
+        
+      }
+    }
+
+
+
+
+    
+  }
+}
+
