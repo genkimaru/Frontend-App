@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分时任务</title>
+</head>
+<body>
+
+<div id="container">
+    <p>
+    一般来说，浏览器的渲染频率FPS frame per second 是 60 帧。
+    意味着 每一帧的时间是16.6 毫秒。浏览器的一帧代表着浏览器的一次完整重绘。
+    </p>
+    <P>
+    在这一帧的过程中，当有空闲时间的时候，可以调用<em>requestIdleCallback </em>的回调函数。
+    回调函数提供了一个参数，通过该参数来调用timeRemaining的方法，可以获得该帧还有多少剩余时间。
+    </p>
+    <button type="button" onclick="performChunk()">生成100000个数字 </button>
+</div>
+</body>
+
+<script>
+function task(i) {
+        let div = document.createElement('div');
+        div.innerText = i;
+        document.getElementById('container').appendChild(div);
+}
+
+
+let len = 100000;
+let datas = Array.from({length:len} , (_ , i) => i )
+let i  = 0 ;
+
+
+// window.requestIdleCallback = function (handler) {
+//   let startTime = Date.now()
+
+//   return setTimeout(function () {
+//     handler({
+//       didTimeout: false,
+//       timeRemaining: function () {
+//         return Math.max(0, 50.0 - (Date.now() - startTime))
+//       },
+//     })
+//   }, 1)
+// }
+
+let startTime;
+let stopTime ;
+
+function myNonEssentialWork(deadline) {
+    console.log(deadline.timeRemaining())
+  while ((deadline.timeRemaining() > 0 || deadline.didTimeout) && datas.length > 0) {
+    task(datas.shift())
+  }
+
+  if (datas.length > 0) {
+    requestIdleCallback(myNonEssentialWork)
+  }
+  
+  if(datas.length === 0 ){
+    stopTime = Date.now();
+    console.log(stopTime)
+    console.log(`Total consumed Time : ${ (stopTime - startTime) / 1000 } s`)
+  }
+}
+
+function performChunk(){
+    startTime = Date.now();
+    console.log(startTime)
+    requestIdleCallback(myNonEssentialWork)
+   
+}
+
+
+
+</script>
+</html>
